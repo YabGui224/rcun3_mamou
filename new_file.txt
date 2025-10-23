@@ -1,0 +1,2 @@
+Hello from Node.js fs module
+This is new content added to the file

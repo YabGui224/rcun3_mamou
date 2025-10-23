@@ -1,0 +1,14 @@
+{
+  "name": "codes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli_tp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cli_tp.js",
+    "start:dev": "node --watch cli_tp.js"
+  },
+  "keywords": [],
+  "author": "Yaboigui",
+  "license": "ISC"
+}
