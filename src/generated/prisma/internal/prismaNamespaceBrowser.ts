@@ -74,6 +74,7 @@ export const UserScalarFieldEnum = {
   nom: 'nom',
   prenoms: 'prenoms',
   tel: 'tel',
+  password: 'password',
   avatar: 'avatar'
 } as const
 
@@ -109,6 +110,7 @@ export const UserOrderByRelevanceFieldEnum = {
   nom: 'nom',
   prenoms: 'prenoms',
   tel: 'tel',
+  password: 'password',
   avatar: 'avatar'
 } as const
 

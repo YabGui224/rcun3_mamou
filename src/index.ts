@@ -1,27 +1,12 @@
 
 import express from "express";
 import { prisma } from "./script";
+import userRoute from "./routes/users";
 
 const app = express();
 app.use(express.json());
 
- const createUser = async () => {
-    const user = await prisma.user.create({
-        data: {
-            nom: "Balde",
-            prenoms: "Saliou",
-            tel: "620000000",
-            avatar: "image_url"
-        }
-    });
-    return user
-}
-
-app.get("/", async (req, res) => {
-    const user = await createUser();
-        res.json({message : user })
-});
-
+app.use('/api/users', userRoute );
 
 
 app.listen(3000, () => {
