@@ -9,5 +9,5 @@
  */
 export type * from './models/User'
 export type * from './models/Contacts'
-export type * from './models/Notification'
+export type * from './models/Notifications'
 export type * from './commonInputTypes'

@@ -36,28 +36,31 @@ export type UserSumAggregateOutputType = {
 export type UserMinAggregateOutputType = {
   id: number | null
   nom: string | null
-  prenoms: string | null
+  prenom: string | null
   tel: string | null
   password: string | null
   avatar: string | null
+  email: string | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: number | null
   nom: string | null
-  prenoms: string | null
+  prenom: string | null
   tel: string | null
   password: string | null
   avatar: string | null
+  email: string | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
   nom: number
-  prenoms: number
+  prenom: number
   tel: number
   password: number
   avatar: number
+  email: number
   _all: number
 }
 
@@ -73,28 +76,31 @@ export type UserSumAggregateInputType = {
 export type UserMinAggregateInputType = {
   id?: true
   nom?: true
-  prenoms?: true
+  prenom?: true
   tel?: true
   password?: true
   avatar?: true
+  email?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
   nom?: true
-  prenoms?: true
+  prenom?: true
   tel?: true
   password?: true
   avatar?: true
+  email?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
   nom?: true
-  prenoms?: true
+  prenom?: true
   tel?: true
   password?: true
   avatar?: true
+  email?: true
   _all?: true
 }
 
@@ -187,10 +193,11 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type UserGroupByOutputType = {
   id: number
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar: string | null
+  email: string
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -219,47 +226,51 @@ export type UserWhereInput = {
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.IntFilter<"User"> | number
   nom?: Prisma.StringFilter<"User"> | string
-  prenoms?: Prisma.StringFilter<"User"> | string
+  prenom?: Prisma.StringFilter<"User"> | string
   tel?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  avatar?: Prisma.StringFilter<"User"> | string
+  avatar?: Prisma.StringNullableFilter<"User"> | string | null
+  email?: Prisma.StringFilter<"User"> | string
   contacts?: Prisma.ContactsListRelationFilter
-  notification?: Prisma.NotificationListRelationFilter
+  notifications?: Prisma.NotificationsListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nom?: Prisma.SortOrder
-  prenoms?: Prisma.SortOrder
+  prenom?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  avatar?: Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
   contacts?: Prisma.ContactsOrderByRelationAggregateInput
-  notification?: Prisma.NotificationOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationsOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   tel?: string
+  email?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   nom?: Prisma.StringFilter<"User"> | string
-  prenoms?: Prisma.StringFilter<"User"> | string
+  prenom?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  avatar?: Prisma.StringFilter<"User"> | string
+  avatar?: Prisma.StringNullableFilter<"User"> | string | null
   contacts?: Prisma.ContactsListRelationFilter
-  notification?: Prisma.NotificationListRelationFilter
-}, "id" | "tel">
+  notifications?: Prisma.NotificationsListRelationFilter
+}, "id" | "tel" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nom?: Prisma.SortOrder
-  prenoms?: Prisma.SortOrder
+  prenom?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  avatar?: Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -273,78 +284,86 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
   nom?: Prisma.StringWithAggregatesFilter<"User"> | string
-  prenoms?: Prisma.StringWithAggregatesFilter<"User"> | string
+  prenom?: Prisma.StringWithAggregatesFilter<"User"> | string
   tel?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
-  avatar?: Prisma.StringWithAggregatesFilter<"User"> | string
+  avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  email?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar?: string | null
+  email: string
   contacts?: Prisma.ContactsCreateNestedManyWithoutUserInput
-  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: number
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar?: string | null
+  email: string
   contacts?: Prisma.ContactsUncheckedCreateNestedManyWithoutUserInput
-  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   contacts?: Prisma.ContactsUpdateManyWithoutUserNestedInput
-  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   contacts?: Prisma.ContactsUncheckedUpdateManyWithoutUserNestedInput
-  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: number
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar?: string | null
+  email: string
 }
 
 export type UserUpdateManyMutationInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserOrderByRelevanceInput = {
@@ -356,10 +375,11 @@ export type UserOrderByRelevanceInput = {
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nom?: Prisma.SortOrder
-  prenoms?: Prisma.SortOrder
+  prenom?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   password?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  email?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -369,19 +389,21 @@ export type UserAvgOrderByAggregateInput = {
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nom?: Prisma.SortOrder
-  prenoms?: Prisma.SortOrder
+  prenom?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   password?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  email?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nom?: Prisma.SortOrder
-  prenoms?: Prisma.SortOrder
+  prenom?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   password?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  email?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -395,6 +417,10 @@ export type UserScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -419,37 +445,39 @@ export type UserUpdateOneRequiredWithoutContactsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutContactsInput, Prisma.UserUpdateWithoutContactsInput>, Prisma.UserUncheckedUpdateWithoutContactsInput>
 }
 
-export type UserCreateNestedOneWithoutNotificationInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutNotificationNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationInput
-  upsert?: Prisma.UserUpsertWithoutNotificationInput
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationInput, Prisma.UserUpdateWithoutNotificationInput>, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
 }
 
 export type UserCreateWithoutContactsInput = {
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
-  notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  avatar?: string | null
+  email: string
+  notifications?: Prisma.NotificationsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutContactsInput = {
   id?: number
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
-  notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  avatar?: string | null
+  email: string
+  notifications?: Prisma.NotificationsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutContactsInput = {
@@ -470,74 +498,80 @@ export type UserUpdateToOneWithWhereWithoutContactsInput = {
 
 export type UserUpdateWithoutContactsInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
-  notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  notifications?: Prisma.NotificationsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutContactsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
-  notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  notifications?: Prisma.NotificationsUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutNotificationInput = {
+export type UserCreateWithoutNotificationsInput = {
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar?: string | null
+  email: string
   contacts?: Prisma.ContactsCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutNotificationInput = {
+export type UserUncheckedCreateWithoutNotificationsInput = {
   id?: number
   nom: string
-  prenoms: string
+  prenom: string
   tel: string
   password: string
-  avatar: string
+  avatar?: string | null
+  email: string
   contacts?: Prisma.ContactsUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutNotificationInput = {
+export type UserCreateOrConnectWithoutNotificationsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
 }
 
-export type UserUpsertWithoutNotificationInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationInput, Prisma.UserUncheckedCreateWithoutNotificationInput>
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutNotificationInput = {
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationInput, Prisma.UserUncheckedUpdateWithoutNotificationInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
 }
 
-export type UserUpdateWithoutNotificationInput = {
+export type UserUpdateWithoutNotificationsInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   contacts?: Prisma.ContactsUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutNotificationInput = {
+export type UserUncheckedUpdateWithoutNotificationsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nom?: Prisma.StringFieldUpdateOperationsInput | string
-  prenoms?: Prisma.StringFieldUpdateOperationsInput | string
+  prenom?: Prisma.StringFieldUpdateOperationsInput | string
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   contacts?: Prisma.ContactsUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -548,12 +582,12 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
 
 export type UserCountOutputType = {
   contacts: number
-  notification: number
+  notifications: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contacts?: boolean | UserCountOutputTypeCountContactsArgs
-  notification?: boolean | UserCountOutputTypeCountNotificationArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
 }
 
 /**
@@ -576,20 +610,21 @@ export type UserCountOutputTypeCountContactsArgs<ExtArgs extends runtime.Types.E
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountNotificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.NotificationWhereInput
+export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationsWhereInput
 }
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nom?: boolean
-  prenoms?: boolean
+  prenom?: boolean
   tel?: boolean
   password?: boolean
   avatar?: boolean
+  email?: boolean
   contacts?: boolean | Prisma.User$contactsArgs<ExtArgs>
-  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -598,16 +633,17 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type UserSelectScalar = {
   id?: boolean
   nom?: boolean
-  prenoms?: boolean
+  prenom?: boolean
   tel?: boolean
   password?: boolean
   avatar?: boolean
+  email?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nom" | "prenoms" | "tel" | "password" | "avatar", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nom" | "prenom" | "tel" | "password" | "avatar" | "email", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contacts?: boolean | Prisma.User$contactsArgs<ExtArgs>
-  notification?: boolean | Prisma.User$notificationArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -615,15 +651,16 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     contacts: Prisma.$ContactsPayload<ExtArgs>[]
-    notification: Prisma.$NotificationPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nom: string
-    prenoms: string
+    prenom: string
     tel: string
     password: string
-    avatar: string
+    avatar: string | null
+    email: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -965,7 +1002,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   contacts<T extends Prisma.User$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  notification<T extends Prisma.User$notificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -997,10 +1034,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'Int'>
   readonly nom: Prisma.FieldRef<"User", 'String'>
-  readonly prenoms: Prisma.FieldRef<"User", 'String'>
+  readonly prenom: Prisma.FieldRef<"User", 'String'>
   readonly tel: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly avatar: Prisma.FieldRef<"User", 'String'>
+  readonly email: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -1368,27 +1406,27 @@ export type User$contactsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * User.notification
+ * User.notifications
  */
-export type User$notificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Notification
+   * Select specific fields to fetch from the Notifications
    */
-  select?: Prisma.NotificationSelect<ExtArgs> | null
+  select?: Prisma.NotificationsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Notification
+   * Omit specific fields from the Notifications
    */
-  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  omit?: Prisma.NotificationsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.NotificationInclude<ExtArgs> | null
-  where?: Prisma.NotificationWhereInput
-  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
-  cursor?: Prisma.NotificationWhereUniqueInput
+  include?: Prisma.NotificationsInclude<ExtArgs> | null
+  where?: Prisma.NotificationsWhereInput
+  orderBy?: Prisma.NotificationsOrderByWithRelationInput | Prisma.NotificationsOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationsWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+  distinct?: Prisma.NotificationsScalarFieldEnum | Prisma.NotificationsScalarFieldEnum[]
 }
 
 /**

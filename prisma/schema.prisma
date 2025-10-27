@@ -17,23 +17,25 @@ datasource db {
 model User {
   id  Int @id @default(autoincrement())
   nom  String
-  prenoms  String
+  prenom  String
   tel  String @unique
   password  String
-  avatar  String
+  avatar  String?
+  email   String @unique
   contacts  Contacts[]
-  notification  Notification []
-
+  notifications  Notifications []
 }
+
 model Contacts {
   id  Int @id @default(autoincrement())
-  userId  Int
-  messagem String
+  contact String
   user User @relation (fields: [userId], references:[id]) 
+  userId  Int
 }
 
-model Notification {
+model Notifications {
   id  Int @id @default(autoincrement())
-  userId  Int
+  message String
   user User @relation (fields: [userId], references:[id])
+  userId  Int
 }

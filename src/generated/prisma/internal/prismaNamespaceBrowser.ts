@@ -50,7 +50,7 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   User: 'User',
   Contacts: 'Contacts',
-  Notification: 'Notification'
+  Notifications: 'Notifications'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,10 +72,11 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   nom: 'nom',
-  prenoms: 'prenoms',
+  prenom: 'prenom',
   tel: 'tel',
   password: 'password',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  email: 'email'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -83,19 +84,20 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const ContactsScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  messagem: 'messagem'
+  contact: 'contact',
+  userId: 'userId'
 } as const
 
 export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
 
 
-export const NotificationScalarFieldEnum = {
+export const NotificationsScalarFieldEnum = {
   id: 'id',
+  message: 'message',
   userId: 'userId'
 } as const
 
-export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+export type NotificationsScalarFieldEnum = (typeof NotificationsScalarFieldEnum)[keyof typeof NotificationsScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -106,20 +108,36 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const UserOrderByRelevanceFieldEnum = {
   nom: 'nom',
-  prenoms: 'prenoms',
+  prenom: 'prenom',
   tel: 'tel',
   password: 'password',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  email: 'email'
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
 
 
 export const ContactsOrderByRelevanceFieldEnum = {
-  messagem: 'messagem'
+  contact: 'contact'
 } as const
 
 export type ContactsOrderByRelevanceFieldEnum = (typeof ContactsOrderByRelevanceFieldEnum)[keyof typeof ContactsOrderByRelevanceFieldEnum]
+
+
+export const NotificationsOrderByRelevanceFieldEnum = {
+  message: 'message'
+} as const
+
+export type NotificationsOrderByRelevanceFieldEnum = (typeof NotificationsOrderByRelevanceFieldEnum)[keyof typeof NotificationsOrderByRelevanceFieldEnum]
 

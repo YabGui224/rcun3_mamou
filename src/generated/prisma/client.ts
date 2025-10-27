@@ -52,7 +52,7 @@ export type User = Prisma.UserModel
  */
 export type Contacts = Prisma.ContactsModel
 /**
- * Model Notification
+ * Model Notifications
  * 
  */
-export type Notification = Prisma.NotificationModel
+export type Notifications = Prisma.NotificationsModel
