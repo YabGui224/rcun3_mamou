@@ -1,5 +1,4 @@
 # RCUN3-MAMOU BACKEND - Project : Application “Gestion de Contacts”
-
 ## 🧩 Description du projet
 
 L’application **Gestion de Contacts** est une API développée en **Node.js + TypeScript** avec **Express** et **Prisma**.  
@@ -121,16 +120,17 @@ model Notifications {
 
 ## Les commandes a taper pour generer les tables dans votre serveur de donnees 
   1. mettre a jour le client prisam 
-    ```bash
+    ```
       npx prisma generate
     ```
+    
   2. generer la migration pour creer les tables
-    ```bash
+    ```
       npx prisma migrate dev
     ```
   
   3. Optionel : pour lancer prisma studio 
-    ```bash
+    ```
       npx prisma studio
     ```
 
