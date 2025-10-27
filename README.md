@@ -21,13 +21,13 @@ Ce projet est conçu comme **support pédagogique** pour les filles en formation
 ```
 
 ## Pour cloner toutes les branches du repository  
-taper ```bash 
+```bash 
     git clone https://github.com/YabGui224/rcun3_mamou.git
 
  ```
 
 ## Installer les dependances du projet
-  taper : ```bash 
+  ```bash 
     npm install
 
   ```
@@ -50,16 +50,16 @@ taper ```bash
 
 ## 🧱 Stack technique
 
-| Outil | Rôle |
-|--------|------|
-| **Node.js / Express** | Framework backend |
-| **TypeScript** | Typage fort et sécurité du code |
-| **Prisma** | ORM moderne et rapide |
-| **Zod** | Validation des données d’entrée |
-| **Redis** | Stockage temporaire des OTP |
-| **Nodemailer** | Envoi d’emails (réinitialisation de mot de passe) |
-| **jsonwebtoken (JWT)** | Authentification et sécurité des utilisateurs |
-| **Insomnia** | Application utilisee pour tester les endpoints de l'API
+| Outil | Rôle |Liens des documentations|
+|--------|------|--------|
+| **Node.js / Express** | Framework backend | https://expressjs.com/ |
+| **TypeScript** | Typage fort et sécurité du code |.https://www.typescriptlang.org/ |
+| **Prisma** | ORM moderne et rapide | https://www.prisma.io/docs/getting-started |
+| **Zod** | Validation des données d’entrée | https://zod.dev/ |
+| **Redis** | Stockage temporaire des OTP | https://redis.io/ |
+| **Nodemailer** | Envoi d’emails (réinitialisation de mot de passe) | https://nodemailer.com/ |
+| **jsonwebtoken (JWT)** | Authentification et sécurité des utilisateurs | https://github.com/auth0/node-jsonwebtoken |
+| **Insomnia** | Application utilisee pour tester les endpoints de l'API | https://insomnia.rest/ |
 
 ---
 
@@ -118,7 +118,23 @@ model Notifications {
 | **EMAIL** | l'email a utiliser pour permettre votre application d'envoyer les emails |
 | **PASS** | Votre google pass : c'est un code que vous allez cree dans votre compte google pour pouvoir envoyer les emails |
 
+
+## Les commandes a taper pour generer les tables dans votre serveur de donnees 
+  1. mettre a jour le client prisam 
+    ```bash
+      npx prisma generate
+    ```
+  2. generer la migration pour creer les tables
+    ```bash
+      npx prisma migrate dev
+    ```
+  
+  3. Optionel : pour lancer prisma studio 
+    ```bash
+      npx prisma studio
+    ```
+
 ## Comment creer votre **Google PASS**
 Suivez ces images ci-dessous
-![Google App fig1](./assets/banner.png)
-![Google App fig2](./assets/banner.png)
+![Google App fig1](https://github.com/YabGui224/rcun3_mamou/blob/project/img/google-pass-link.png)
+![Google App fig2](https://github.com/YabGui224/rcun3_mamou/blob/project/img/google-pass.png)
